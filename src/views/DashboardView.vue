@@ -5,18 +5,26 @@
         </div>
         <table>
             <tr>
-                <th>Id</th>
-                <th>Nombre</th>
-                <th>Apellido</th>
-                <th>Email</th>
-                <th>Teléfono</th>                
+                
+                    <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Teléfono</th>
+                    <th>Correo electrónico</th>
+                    <th>Direcciones</th>
+                    <th>Seguros</th>
+                    </tr>
             </tr>
-            <tr v-if="ended" v-for="user in users">
-                <!-- <td>{{users.value[0].id}}</td> -->
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+            <tbody>
+                <tr v-for="user in users" :key="user.id">
+                <td>{{ user.fields.Id }}</td>
+                <td>{{ user.fields.Nombre }}</td>
+                <td>{{ user.fields.Apellido }}</td>
+                <td>{{ user.fields.Teléfono }}</td>
+                <td>{{ user.fields.email }}</td>
+                </tr>
+      </tbody>
         </table>
     </main>
 </template>
@@ -33,9 +41,10 @@ function getDatos() {
     get('tblKUeL6mByctJU0L').then((result) => {        
         ended.value = true
         users.value = result.records;
-        console.log(users.value[0].fields.Id);
+        console.log(users.value);
         
-    }).catch((err) => {
+    })
+    .catch((err) => {
         console.log(error);
     });
 }
