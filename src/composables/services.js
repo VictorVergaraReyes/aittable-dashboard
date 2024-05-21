@@ -7,7 +7,7 @@ export function servicios(){
     const baseURL = "https://api.airtable.com/v0/"
     const token = 'pathpGJJfDkmLCGgm.0760accdd0d574675d351d343cc90cfedc326a3d9776059611cc52561bf641e8'
 
-    const get = async (table) => {
+    const getRecord = async (table) => {
         const response = await axios({
             method:'get',
             headers: {
@@ -18,7 +18,7 @@ export function servicios(){
         }).then(res => res)
         return response.data        
     }
-    const post = async () => {
+    const createRecord = async () => {
         const response = await axios({
             method:'post',
             headers: {
@@ -30,5 +30,5 @@ export function servicios(){
         return response.data        
     }
 
-    return {get,post}
+    return {getRecord,createRecord}
 }
