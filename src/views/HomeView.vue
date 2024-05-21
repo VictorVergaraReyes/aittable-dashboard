@@ -12,7 +12,7 @@
       <input type="text" class="form-control">
     </form>
     <form>
-      <h1>Dirección</h1>
+      <h2>Dirección</h2>
       <label for="">Calle</label>
       <input type="text" class="form-control">
       <label for="">Ciudad</label>
@@ -21,7 +21,7 @@
       <input type="text" class="form-control">
     </form>
     <form>
-      <h1>Seguro</h1>
+      <h2>Seguro</h2>
       <label for="">Nombre</label>
       <select class="form-control selectpicker" name="" id="">
         <option value="Afirme">Afirme</option>
@@ -41,6 +41,8 @@
       <label for="">Fecha de vencimieto</label>
       <input type="date" class="form-control selectpicker">
     </form>
+    <br><br>
+    <button class="form-control selectpicker">Crear usuario</button>
   </main>
 </template>
 
