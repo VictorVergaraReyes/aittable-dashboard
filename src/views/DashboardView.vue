@@ -24,6 +24,51 @@
                 </tr>
       </tbody>
         </table>
+        <button @click="getDirecciones()">Direcciones</button>
+        <table class="table">
+            <thead>                
+                <tr>
+                    <th>IdDireccion</th>
+                    <th>Calle</th>
+                    <th>Ciudad</th>
+                    <th>Código Postal</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="adress in addresses" :key="adress.id">
+                    <td>{{ adress.fields.IdDireccion }}</td>
+                    <td>{{ adress.fields.Calle }}</td>
+                    <td>{{ adress.fields.Ciudad }}</td>
+                    <td>{{ adress.fields.CP }}</td>
+                    
+                </tr>
+      </tbody>
+        </table>
+        <button @click="getSeguros()">Seguros</button>
+        <table class="table">
+            <thead>                
+                <tr>
+                    <th>Id seguro</th>
+                    <th>Nombre</th>
+                    <th>Tipo</th>
+                    <th>Fecha de inicio</th>
+                    <th>Fecha de vencimieto</th>
+                    <th>Usuario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="insurance in insurances" :key="insurance.id">
+                    <td>{{ insurance.fields.IdSeguro }}</td>
+                    <td>{{ insurance.fields.Nombre[0] }}</td>
+                    <td>{{ insurance.fields.Tipo[0] }}</td>
+                    <td>{{ insurance.fields.FechaDeInicio }}</td>
+                    <td>{{ insurance.fields.FechaDeVencimiento }}</td>                    
+                    <td>{{ insurance.fields.Usuario[0] }}</td>  
+                </tr>
+      </tbody>
+        </table>
+        
     </main>
 </template>
 
@@ -34,6 +79,8 @@ const {getRecord,createRecord} = servicios()
 const telefono = ref()
 const ended = ref(false)
 const users = ref({})
+const addresses = ref({})
+const insurances = ref({})
 
 function getDatos() {
     getRecord('tblKUeL6mByctJU0L').then((result) => {        
@@ -47,14 +94,29 @@ function getDatos() {
     });
 }
 
-function crearUsuario(){
-    createRecord('tblKUeL6mByctJU0L')
-    .then(()=>{
-        console.log("usuario registrado");
+
+function getDirecciones() {
+    getRecord('tblB7PihYGIRSX0Gy').then((result) => {        
+        addresses.value = result.records;
+        console.log(addresses.value);
+        
     })
-    .catch((error)=>{
-        console.log(error)
-    })
+    .catch((err) => {
+        console.log(err);
+    });
 }
+
+
+function getSeguros() {
+    getRecord('tbla2gA7JEzvxhv4b').then((result) => {        
+        insurances.value = result.records;
+        console.log(insurances.value);
+        
+    })
+    .catch((err) => {
+        console.log(err);
+    });
+}
+
 
 </script>

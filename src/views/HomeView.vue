@@ -56,6 +56,7 @@ import Swal from "sweetalert2";
 import {ref} from 'vue'
 
 const {createRecord} = servicios()
+
 const nombreForm = ref("")
 const apellidoForm = ref("")
 const emailForm = ref("")
