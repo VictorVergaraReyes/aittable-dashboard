@@ -18,7 +18,7 @@ export function servicios(){
         }).then(res => res)
         return response.data        
     }
-    const createRecord = async (Nombre,Apellido,email,tel,table) => {        
+    const createRecord = async (fields,table) => {        
         const response = await axios({
             method:'post',
             headers: {
@@ -27,12 +27,8 @@ export function servicios(){
             },
             url: `${baseURL}${baseId}/${table}`,
             data:{
-                fields:{
-                    Nombre,
-                    Apellido,
-                    email,
-                    Teléfono:tel
-                }
+                fields,
+                "typecast": true 
             }
         }).then(res => res)
         return response.data        
