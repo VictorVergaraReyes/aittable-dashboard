@@ -47,8 +47,14 @@ function getDatos() {
     });
 }
 
-function postDatos(){
+function crearUsuario(){
     createRecord('tblKUeL6mByctJU0L')
+    .then(()=>{
+        console.log("usuario registrado");
+    })
+    .catch((error)=>{
+        console.log(error)
+    })
 }
 
 </script>

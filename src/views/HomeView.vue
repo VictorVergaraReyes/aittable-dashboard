@@ -3,13 +3,13 @@
     <h1>Crear usuario</h1>
     <form>
       <label for="">Nombre</label>
-      <input type="text" class="form-control">
+      <input v-model="nombreForm" type="text" class="form-control">
       <label for="">Apellido</label>
-      <input type="text" class="form-control">
+      <input v-model="apellidoForm" type="text" class="form-control">
       <label for="">Email</label>
-      <input type="text" class="form-control">
+      <input v-model="emailForm" type="text" class="form-control">
       <label for="">Teléfono</label>
-      <input type="text" class="form-control">
+      <input v-model="telefonoForm" type="text" class="form-control" minlength="12" maxlength="12">
     </form>
     <form>
       <h2>Dirección</h2>
@@ -42,13 +42,66 @@
       <input type="date" class="form-control selectpicker">
     </form>
     <br><br>
-    <button class="form-control selectpicker">Crear usuario</button>
+    <button class="form-control selectpicker"
+      @click="crearUsuario()"
+    >Crear usuario</button>
   </main>
 </template>
 
 
 <script setup>
 import TheWelcome from '../components/TheWelcome.vue'
+import {servicios} from "@/composables/services.js";
+import Swal from "sweetalert2";
+import {ref} from 'vue'
+
+const {createRecord} = servicios()
+const nombreForm = ref("")
+const apellidoForm = ref("")
+const emailForm = ref("")
+const telefonoForm = ref("")
+
+
+
+function crearUsuario(){
+
+    createRecord(
+      nombreForm.value,
+      apellidoForm.value,
+      emailForm.value,
+      telefonoForm.value,
+      'tblKUeL6mByctJU0L')
+    .then(()=>{
+        console.log("usuario registrado");
+        vaciarCampos()
+
+        Swal.fire({
+          type: "exito",
+          time:500,
+          title:
+            "Usuario registrado con éxito!",
+        });
+    })
+    .catch((error)=>{
+        console.log(error)
+        vaciarCampos()
+
+        Swal.fire({
+          type: "error",
+          time:500,
+          title:
+            "Algo salió mal, en breve un ejecutivo te contactará para mantener tu descuento!",
+        });
+    })
+}
+
+function vaciarCampos(){
+  nombreForm.value = ""
+  apellidoForm.value = ""
+  emailForm.value = ""
+  telefonoForm.value = ""
+}
+
 
 
 </script>

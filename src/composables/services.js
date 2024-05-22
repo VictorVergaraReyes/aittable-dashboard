@@ -18,14 +18,22 @@ export function servicios(){
         }).then(res => res)
         return response.data        
     }
-    const createRecord = async () => {
+    const createRecord = async (Nombre,Apellido,email,tel,table) => {        
         const response = await axios({
             method:'post',
             headers: {
                 'Content-Type': 'application/json',
                 Authorization: 'Bearer ' + token
             },
-            url: `${baseURL}`
+            url: `${baseURL}${baseId}/${table}`,
+            data:{
+                fields:{
+                    Nombre,
+                    Apellido,
+                    email,
+                    Teléfono:tel
+                }
+            }
         }).then(res => res)
         return response.data        
     }
