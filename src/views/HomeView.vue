@@ -47,12 +47,8 @@
     </form>
     <br><br>
     <button class="form-control selectpicker"
-      @click="crearUsuario()"
-    >Crear usuario</button>
-
-    <button class="form-control selectpicker"
-      @click="crearDireccion()"
-    >Crear dirección</button>
+      @click="enviar()"
+    >Enviar datos</button>
   </main>
 </template>
 
@@ -89,7 +85,7 @@ const estadosMexico = [
   { name: "Guerrero", capital: "Chilpancingo de los Bravo" },
   { name: "Hidalgo", capital: "Pachuca de Soto" },
   { name: "Jalisco", capital: "Guadalajara" },
-  { name: "México", capital: "Toluca de Lerdo" },
+  { name: "Estado de México", capital: "Toluca de Lerdo" },
   { name: "Michoacán de Ocampo", capital: "Morelia" },
   { name: "Morelos", capital: "Cuernavaca" },
   { name: "Nayarit", capital: "Tepic" },
@@ -168,6 +164,7 @@ function crearDireccion(){
           title:
             "Usuario registrado con éxito!",
         });
+        
     })
     .catch((error)=>{
         console.log(error)
@@ -183,11 +180,20 @@ function crearDireccion(){
 }
 
 
+function enviar(){
+  crearUsuario()  
+  crearDireccion()
+}
+
 function vaciarCampos(){
   nombreForm.value = ""
   apellidoForm.value = ""
   emailForm.value = ""
   telefonoForm.value = ""
+  calleForm.value = ""
+  ciudadForm.value = ""
+  cpForm.value = ""
+  estadoForm.value = ""
 }
 
 

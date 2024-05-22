@@ -31,6 +31,7 @@
                     <th>IdDireccion</th>
                     <th>Calle</th>
                     <th>Ciudad</th>
+                    <th>Estado</th>
                     <th>Código Postal</th>
                     
                 </tr>
@@ -40,6 +41,7 @@
                     <td>{{ adress.fields.IdDireccion }}</td>
                     <td>{{ adress.fields.Calle }}</td>
                     <td>{{ adress.fields.Ciudad }}</td>
+                    <td>{{ adress.fields.Estados[0] }}</td>
                     <td>{{ adress.fields.CP }}</td>
                     
                 </tr>
